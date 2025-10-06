@@ -40,11 +40,12 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={handleTimeoutClick}>
+        {!!!isLoading && <button onClick={handleTimeoutClick}>
           Timeout now
-        </button>
+        </button>}
         
-        {isLoading && <Spinner />}
+        
+        {!!isLoading && <Spinner />}
       </div>
     </>
   )
