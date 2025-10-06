@@ -8,6 +8,7 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [isLoading, setLoading] = useState(false)
 
   const timeout = function(milliSecs) {
     return new Promise((resolve, reject)=>{
@@ -16,10 +17,15 @@ function App() {
   }
 
   const handleTimeoutClick = () => {
+    setLoading(true)
     timeout(2000)
     .then(result=>console.log('timeout result', result))
     .catch(console.warn)
-    .finally( ()=>{} )
+    .finally( ()=>{
+      setLoading(false)
+      // after timeout
+    } )
+    // during timeout
   }
 
   return (
@@ -38,7 +44,7 @@ function App() {
           Timeout now
         </button>
         
-        <Spinner />
+        {isLoading && <Spinner />}
       </div>
     </>
   )
