@@ -9,14 +9,17 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  const timeout = async function(milliSecs) {
+  const timeout = function(milliSecs) {
     return new Promise((resolve, reject)=>{
       setTimeout( ()=>resolve('timeout completed'), milliSecs)
     })
   }
 
   const handleTimeoutClick = () => {
-
+    timeout(2000)
+    .then(result=>console.log('timeout result', result))
+    .catch(console.warn)
+    .finally( ()=>{} )
   }
 
   return (
